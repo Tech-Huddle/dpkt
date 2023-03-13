@@ -16,5 +16,5 @@ Please follow the below strategy in order to avoid conflicts and keep maintainab
 
 1. Try to follow the below branch naming for development `feature/<feature-name>`
 
-2. After development raise **Pull Request** to `main` branch. Upon mergeing the request it would deploy the dev changes to ***dev* environment
+2. After development raise **Pull Request** to `main` branch. Upon mergeing the request it would deploy the dev changes to **dev** environment
 
