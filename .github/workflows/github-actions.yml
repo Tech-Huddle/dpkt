@@ -25,7 +25,7 @@ jobs:
         # Artifact name
         name: build-package
         # A file, directory or wildcard pattern that describes what to upload
-        path: path/to/artifact/build
+        path: ${{ vars.GITHUB_WORKSPACE }}/build
         # The desired behavior if no files are found using the provided path.
 
   deploy:
