@@ -42,5 +42,5 @@ jobs:
         # Destination path
         path: build-package
     - run: |
-        cd buil-package
+        cd build-package
         ls -l
