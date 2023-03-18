@@ -34,5 +34,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v2.1.1
+      with:
+        # Artifact name
+        name: build-package
+        # Destination path
+        path: build-package
     - run: |
         ls -l
