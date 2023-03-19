@@ -9,15 +9,18 @@ jobs:
   env-check:
     name: Check Environment
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.set-env.outputs.test }}
     steps:
-    - name: Set ENV
+    - id: set-env
+      name: Set ENV
       if: ${{ startsWith(github.ref_name, 'feature/') }}
       run: |
         echo "************* Set ENV **************"
-        echo "$GITHUB_REF_NAME ${{ env.ENV }}"
+        echo "Branch=$GITHUB_REF_NAME"
+        echo "Setting up ENV=dev"
+        echo "ENV=dev" >> "$GITHUB_OUTPUT"
         echo "************************************"
-      env:
-        ENV: dev
 
   build:
     name: Build
