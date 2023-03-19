@@ -4,16 +4,17 @@ on: [push]
 
 env:
   NODE_VERSION: '18.x'
-  ENV:
-    ${{ if contains(env.GITHUB_REF_NAME, 'release') }}:
-      value: release
-    ${{ elseif contains(env.GITHUB_REF_NAME, 'stage') }}:
-      value: stage
-    ${{ else }}:
-      value: dev
-
 
 jobs:
+  env-check:
+    name: Check Environment
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set ENV
+      if: contains(${{ env.GITHUB_REF_NAME }}, 'feature')
+      env:
+        ENV: dev
+
   build:
     name: Build
     runs-on: ubuntu-latest
