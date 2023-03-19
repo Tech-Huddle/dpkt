@@ -15,7 +15,7 @@ jobs:
         echo "************* Set ENV **************"
         echo "$GITHUB_REF_NAME ${{ env.ENV }}"
         echo "************************************"
-      if: ${{ startsWith(github.ref.name, 'feature') }}
+      if: ${{ startsWith(github.ref.name, 'refs/heads/feature/') }}
       env:
         ENV: dev
 
