@@ -14,7 +14,7 @@ jobs:
       if: contains(${{ env.GITHUB_REF_NAME }}, 'feature')
       run: |
         echo "************* Set ENV **************"
-        echo "${ GITHUB_REF_NAME } ${{ env.ENV }}"
+        echo "$GITHUB_REF_NAME ${{ env.ENV }}"
         echo "************************************"
       env:
         ENV: dev
