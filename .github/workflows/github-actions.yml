@@ -3,7 +3,15 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 
 env:
-  NODE_VERSION: '18.x'
+  - NODE_VERSION: '18.x'
+  - name: ENV
+    ${{ if contains(env.GITHUB_REF_NAME, 'release') }}:
+      value: release
+    ${{ elseif contains(env.GITHUB_REF_NAME, 'stage') }}:
+      value: stage
+    ${{ else }}:
+      value: dev
+
 
 jobs:
   build:
@@ -42,6 +50,9 @@ jobs:
         name: build-package
         # Destination path
         path: build-package
-    - run: |
+    - name: Deploment
+      run: |
         cd build-package
         ls -l
+        echo ${{ env.ENV }}
+        echo ${{ env.GITHUB_REF_NAME }}
