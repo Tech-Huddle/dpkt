@@ -10,7 +10,7 @@ jobs:
     name: Check Environment
     runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.set-env.outputs.test }}
+      ENV: ${{ steps.set-env.outputs.env }}
     steps:
     - id: set-env
       name: Set ENV
@@ -19,7 +19,7 @@ jobs:
         echo "************* Set ENV **************"
         echo "Branch=$GITHUB_REF_NAME"
         echo "Setting up ENV=dev"
-        echo "ENV=dev" >> "$GITHUB_OUTPUT"
+        echo "env=dev" >> "$GITHUB_OUTPUT"
         echo "************************************"
 
   build:
@@ -60,8 +60,10 @@ jobs:
         # Destination path
         path: build-package
     - name: Deployment
+      env:
+        ENV: ${{needs.env-check.outputs.ENV}}
       run: |
         cd build-package
         ls -l
-        echo ${{ env.ENV }}
+        echo $ENV
         echo $GITHUB_REF_NAME
