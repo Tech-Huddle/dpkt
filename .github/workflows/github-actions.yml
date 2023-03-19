@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Set ENV
-      if: contains(github.ref.name, 'feature')
+      if: startsWith(github.ref.name, 'feature')
       run: |
         echo "************* Set ENV **************"
         echo "$GITHUB_REF_NAME ${{ env.ENV }}"
