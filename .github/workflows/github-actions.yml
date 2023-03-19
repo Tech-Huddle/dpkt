@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Set ENV
-      if: contains(${{ env.GITHUB_REF_NAME }}, 'feature')
+      if: contains($GITHUB_REF_NAME, 'main')
       run: |
         echo "************* Set ENV **************"
         echo "$GITHUB_REF_NAME ${{ env.ENV }}"
@@ -56,9 +56,9 @@ jobs:
         name: build-package
         # Destination path
         path: build-package
-    - name: Deploment
+    - name: Deployment
       run: |
         cd build-package
         ls -l
         echo ${{ env.ENV }}
-        echo ${{ env.GITHUB_REF_NAME }}
+        echo $GITHUB_REF_NAME
