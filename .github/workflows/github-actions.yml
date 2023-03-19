@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Set ENV
-      if: contains($GITHUB_REF_NAME, 'main')
+      if: contains(github.ref.name, 'main')
       run: |
         echo "************* Set ENV **************"
         echo "$GITHUB_REF_NAME ${{ env.ENV }}"
