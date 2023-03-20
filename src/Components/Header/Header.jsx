@@ -5,9 +5,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-import { Link, Route, Routes } from 'react-router-dom';
-import About from '../About/About';
-import Home from '../Home/Home';
+import { Link } from 'react-router-dom';
+import Routing from './Routing';
 function Header() {
   return (
     <div>
@@ -41,11 +40,7 @@ function Header() {
 
 
       {/* routes for the navbar component in header*/}
-      <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/about' element={<About />} />
-        </Routes>
-        {/* to do: action tabs routes */}
+      <Routing/>
       </div>
   );
 }
