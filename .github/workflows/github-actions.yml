@@ -73,7 +73,7 @@ jobs:
       with:
         command: cp
         source: ./build-package
-        destination: s3://dpkt-$ENV/
+        destination: s3://dpkt-dev/
         aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws_region: sp-south-1
