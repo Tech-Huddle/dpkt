@@ -14,7 +14,7 @@ jobs:
     steps:
     - id: set-env
       name: Set ENV
-      if: ${{ startsWith(github.ref_name, 'feature/') }}
+      if: ${{ (startsWith(github.ref_name, 'feature/')) ||  (startsWith(github.ref_name, 'main')) }}
       run: |
         echo "************* Set ENV **************"
         echo "Branch=$GITHUB_REF_NAME"
@@ -67,5 +67,7 @@ jobs:
       run: |
         cd build-package
         ls -l
-        echo $ENV
+        echo "========= Bucket Name ==========="
+        echo dpkt-$ENV
+        echo "================================="
         echo $GITHUB_REF_NAME
