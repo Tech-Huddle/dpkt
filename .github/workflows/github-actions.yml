@@ -49,7 +49,7 @@ jobs:
 
   deploy:
     name: Deploy
-    runs-on:  amazon/aws-cli
+    runs-on:  ubuntu-latest
     needs: 
     - build
     - env-check
