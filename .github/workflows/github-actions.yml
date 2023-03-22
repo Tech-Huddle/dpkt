@@ -51,7 +51,7 @@ jobs:
   deploy:
     name: Deploy
     runs-on:  ubuntu-latest
-    if: ${{ startsWith(github.ref_name, 'main') }}
+    if: ${{ (startsWith(github.ref_name, 'main')) || contains(github.event.head_commit.message, 'deploy=dev') }}
     needs: 
     - build
     - env-check
