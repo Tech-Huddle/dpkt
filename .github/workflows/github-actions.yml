@@ -18,7 +18,7 @@ jobs:
       run: |
         echo "************* Set ENV **************"
         echo "Branch=$GITHUB_REF_NAME"
-        echo ${{ github.event.head_commit.message }}
+        # echo ${{ github.event.head_commit.message }}
         echo "Setting up ENV=dev"
         echo "env=dev" >> "$GITHUB_OUTPUT"
         echo "************************************"
