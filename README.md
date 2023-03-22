@@ -1,4 +1,5 @@
 # Dutta Para Kali Puja Trust
+[![Dev Pipeline](https://github.com/Tech-Huddle/dpkt/actions/workflows/github-actions.yml/badge.svg?branch=main)](https://github.com/Tech-Huddle/dpkt/actions/workflows/github-actions.yml)
 
 ## Branching Strategy
 Please follow the below strategy in order to avoid conflicts and keep maintainability.
