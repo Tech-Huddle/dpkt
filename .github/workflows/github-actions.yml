@@ -62,10 +62,10 @@ jobs:
         # Destination path
         path: build-package
     - name: Test AWS CLI
-        id: install-aws-cli
-        uses: unfor19/install-aws-cli-action@master
-        with:
-          version: 2
+      id: install-aws-cli
+      uses: unfor19/install-aws-cli-action@master
+      with:
+        version: 2
     - name: Deployment
       env:
         ENV: ${{needs.env-check.outputs.ENV}}
