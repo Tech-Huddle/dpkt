@@ -72,4 +72,6 @@ jobs:
         echo $BUCKET
         echo "================================="
         echo $GITHUB_REF_NAME
-        aws s3 cp build-package s3://$BUCKET/
+        echo "======= Checking AWS Version ======="
+        aws --version
+        # aws s3 cp build-package s3://$BUCKET/
