@@ -61,24 +61,15 @@ jobs:
         name: build-package
         # Destination path
         path: build-package
-    - name: Test AWS CLI
-      id: install-aws-cli
-      uses: unfor19/install-aws-cli-action@master
-      with:
-        version: 2
+    # - name: Test AWS CLI
+    #   id: install-aws-cli
+    #   uses: unfor19/install-aws-cli-action@master
+    #   with:
+    #     version: 2
     - name: Deployment
       env:
         ENV: ${{needs.env-check.outputs.ENV}}
-      # uses: keithweaver/aws-s3-github-action@v1.0.0
-      # with:
-      #   command: cp
-      #   source: ./build-package
-      #   destination: s3://dpkt-dev/
-      #   aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #   aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #   aws_region: ap-south-1
       run: |
-        cd build-package
         ls -l
         BUCKET=dpkt-$ENV
         echo "========= Bucket Name ==========="
