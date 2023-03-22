@@ -50,6 +50,7 @@ jobs:
   deploy:
     name: Deploy
     runs-on:  ubuntu-latest
+    if: ${{ startsWith(github.ref_name, 'main') }}
     needs: 
     - build
     - env-check
@@ -62,7 +63,6 @@ jobs:
         # Destination path
         path: build-package
     - name: Deployment
-      if: ${{ startsWith(github.ref_name, 'main') }}
       env:
         ENV: ${{needs.env-check.outputs.ENV}}
       run: |
