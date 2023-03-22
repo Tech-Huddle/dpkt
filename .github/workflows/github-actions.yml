@@ -84,4 +84,4 @@ jobs:
         export AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
         export AWS_REGION=ap-south-1
         # aws s3api list-objects --bucket $BUCKET
-        aws s3 cp build-package s3://$BUCKET/
+        aws s3 cp build-package s3://$BUCKET/ --recursive
