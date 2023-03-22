@@ -67,7 +67,9 @@ jobs:
       run: |
         cd build-package
         ls -l
+        BUCKET=dpkt-$ENV
         echo "========= Bucket Name ==========="
-        echo dpkt-$ENV
+        echo $BUCKET
         echo "================================="
         echo $GITHUB_REF_NAME
+        aws s3 cp build-package s3://$BUCKET/
