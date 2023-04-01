@@ -1,47 +1,59 @@
 import React from 'react'
-
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import "./Header.css"
+// import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import { Link } from 'react-router-dom';
 import Routing from './Routing';
 function Header() {
   return (
     <div>
-      <div>Heading div</div>
+      <div style={{backgroundColor: 'skyblue'}}>
+        <span>
+          <img src={require('./logo.png')} as={Link} to='/' className="App-logo" alt="logo" />
+        </span>
+        <span>
+          <img src={require('./ashok-stambha.png')} className="App-logo" alt="logo" />
+        </span>
 
+        <span className='styled'>NITI Ayog, Government of India</span>
+      </div>
 
-
-
-
+      <div>
       <Navbar bg="dark" variant='dark' expand="lg">
         <Container>
-          <Navbar.Brand as={Link} to='/'>DPKT</Navbar.Brand>
+          {/* <Navbar.Brand as={Link} to='/'>DPKT</Navbar.Brand> */}
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link as={Link} to='/'>Home</Nav.Link>
-              <Nav.Link as={Link} to='/about'>About</Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item as={Link} to = '/action1'>Action1</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to = '/action2'>Action2</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item as={Link} to = '/action3'>Action3</NavDropdown.Item>
-            </NavDropdown>
+              <Nav.Link as={Link} to='/about'>About us</Nav.Link>
+              <Nav.Link as={Link} to='/about'>Donate</Nav.Link>
+              <Nav.Link as={Link} to='/about'>Contact Us</Nav.Link>
+              <Nav.Link as={Link} to='/about'>Our Works</Nav.Link>
+              <Nav.Link as={Link} to='/about'>Accreditations</Nav.Link>
+
+              <Nav.Link as={Link} to='/about' className="justify-content-end" >Login/Register</Nav.Link>
+
+
+
+
+              {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                <NavDropdown.Item as={Link} to='/action1'>Action1</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to='/action2'>Action2</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item as={Link} to='/action3'>Action3</NavDropdown.Item>
+              </NavDropdown> */}
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
-
-
-
-
       {/* routes for the navbar component in header*/}
-      <Routing/>
-      </div>
+      <Routing />
+    </div>
+    </div>
   );
 }
 
