@@ -1,0 +1,27 @@
+.header_container {
+  background-color: rgb(35, 35, 67);
+  display: flex;
+  width: auto;
+  height: auto;
+  color: whitesmoke;
+}
+
+.part1 {
+  display: block;
+  margin: 20px;
+}
+
+.part_rest {
+  display: block;
+  margin: 20px;
+  padding: 5px;
+}
+.image {
+  height: 166x;
+  width: 166px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
