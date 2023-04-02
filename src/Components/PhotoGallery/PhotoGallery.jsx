@@ -2,9 +2,14 @@ import React, { useEffect, useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 export default function PhotoGallery() {
+    const [show, setModalShow] = React.useState(false);
     let [imageArr, setImageArr] = useState([])
+    const [modalImage, setModalImage] = useState("")
     useEffect(() => {
         let imgSrc = ["https://cdn.pixabay.com/photo/2013/09/22/15/29/prairie-dog-184974_960_720.jpg",
             "https://cdn.pixabay.com/photo/2013/09/22/15/29/prairie-dog-184974_960_720.jpg",
@@ -22,24 +27,34 @@ export default function PhotoGallery() {
     useEffect(() => {
         console.log(imageArr)
     })
+
+    let onHide = () => {
+        console.log("close");
+        setModalShow(false);
+    }
+    let viewImage = (e) => {
+        setModalShow(true);
+        setModalImage(e)
+    }
     return (
         <>
             <div>PhotoGallery</div>
             <Container fluid>
-                {/* <Row >
+                <Row >
                 {imageArr.map((img, i) =>{
-                   return <Col lg={3} md={4} xl={2} ><img className='img-fluid' src={img} alt="" /></Col>
+                   return <Col lg={3} md={4} xl={2} ><img className='img-fluid'  key={i}  onClick={() => { viewImage(img) }} src={img} alt="" /></Col>
                 })}
                     
-                </Row> */}
+                </Row>
 
-                <ResponsiveMasonry
+                {/* <ResponsiveMasonry
                     columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3, 1000: 4, 1200: 6 }}
                 >
                     <Masonry gutter='20px'>
                         {
                             imageArr.map((image, i) => {
                                 return (<img
+                                    onClick={() => { viewImage(image) }}
                                     key={i}
                                     src={image}
                                     style={{ width: "100%", display: "block" }}
@@ -49,10 +64,34 @@ export default function PhotoGallery() {
                             })
                         }
                     </Masonry>
-                </ResponsiveMasonry>
+                </ResponsiveMasonry> */}
 
             </Container>
-
+            {/* **************photo viewer modal ******************/}
+            <Modal
+                show={show}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+                onHide={() => setModalShow(false)}
+            >
+                <Modal.Header closeButton>
+                    {/* <Modal.Title id="contained-modal-title-vcenter">
+                        Modal heading
+                    </Modal.Title> */}
+                </Modal.Header>
+                <Modal.Body>
+                    <img
+                        src={modalImage}
+                        style={{
+                            width: "100%", display: "block" }}
+                                />
+                </Modal.Body>
+                {/* <Modal.Footer>
+                    <Button onClick={(e)=>{onHide()}}>Close</Button>
+                </Modal.Footer> */}
+            </Modal>
+            {/* **************photo viewer modal ******************/}
         </>
 
     )
