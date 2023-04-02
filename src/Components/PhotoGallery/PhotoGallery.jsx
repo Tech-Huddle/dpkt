@@ -5,7 +5,6 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 export default function PhotoGallery() {
     const [show, setModalShow] = React.useState(false);
     let [imageArr, setImageArr] = useState([])
@@ -47,24 +46,6 @@ export default function PhotoGallery() {
                     
                 </Row>
 
-                {/* <ResponsiveMasonry
-                    columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3, 1000: 4, 1200: 6 }}
-                >
-                    <Masonry gutter='20px'>
-                        {
-                            imageArr.map((image, i) => {
-                                return (<img
-                                    onClick={() => { viewImage(image) }}
-                                    key={i}
-                                    src={image}
-                                    style={{ width: "100%", display: "block" }}
-                                />)
-
-
-                            })
-                        }
-                    </Masonry>
-                </ResponsiveMasonry> */}
 
             </Container>
             {/* **************photo viewer modal ******************/}
