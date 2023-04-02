@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 export default function PhotoGallery() {
@@ -27,10 +27,10 @@ export default function PhotoGallery() {
         console.log(imageArr)
     })
 
-    let onHide = () => {
-        console.log("close");
-        setModalShow(false);
-    }
+    // let onHide = () => {
+    //     console.log("close");
+    //     setModalShow(false);
+    // }
     let viewImage = (e) => {
         setModalShow(true);
         setModalImage(e)
@@ -64,6 +64,7 @@ export default function PhotoGallery() {
                 <Modal.Body>
                     <img
                         src={modalImage}
+                        alt=""
                         style={{
                             width: "100%", display: "block" }}
                                 />
