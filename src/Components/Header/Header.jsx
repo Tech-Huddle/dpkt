@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import "./Header.css"
-// import NavDropdown from 'react-bootstrap/NavDropdown';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import { Link } from 'react-router-dom';
 import Routing from './Routing';
@@ -29,23 +29,14 @@ function Header() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link as={Link} to='/'>Home</Nav.Link>
-              <Nav.Link as={Link} to='/about'>About us</Nav.Link>
-              <Nav.Link as={Link} to='/about'>Donate</Nav.Link>
-              <Nav.Link as={Link} to='/about'>Contact Us</Nav.Link>
-              <Nav.Link as={Link} to='/about'>Our Works</Nav.Link>
-              <Nav.Link as={Link} to='/about'>Accreditations</Nav.Link>
-
-              <Nav.Link as={Link} to='/about' className="justify-content-end" >Login/Register</Nav.Link>
-
-
-
-
-              {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item as={Link} to='/action1'>Action1</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to='/action2'>Action2</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item as={Link} to='/action3'>Action3</NavDropdown.Item>
-              </NavDropdown> */}
+              <Nav.Link as={Link} to='/about'>About</Nav.Link>
+              <Nav.Link as={Link} to='/PhotoGallery'>Photo Gallery</Nav.Link>
+              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown.Item as={Link} to = '/action1'>Action1</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to = '/action2'>Action2</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item as={Link} to = '/action3'>Action3</NavDropdown.Item>
+            </NavDropdown>
             </Nav>
           </Navbar.Collapse>
         </Container>
