@@ -24,6 +24,7 @@ function Header() {
             <Nav className="me-auto">
               <Nav.Link as={Link} to='/'>Home</Nav.Link>
               <Nav.Link as={Link} to='/about'>About</Nav.Link>
+              <Nav.Link as={Link} to='/PhotoGallery'>Photo Gallery</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item as={Link} to = '/action1'>Action1</NavDropdown.Item>
               <NavDropdown.Item as={Link} to = '/action2'>Action2</NavDropdown.Item>
