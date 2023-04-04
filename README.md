@@ -31,4 +31,4 @@ Please follow the below strategy in order to avoid conflicts and keep maintainab
 ## Access
 |Environment|Link  |
 |--|--|
-| Dev | https://dpkt-dev.s3.ap-south-1.amazonaws.com/index.html |
+| Dev | http://dpkt-dev.s3-website.ap-south-1.amazonaws.com/ |
