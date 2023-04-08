@@ -12,10 +12,10 @@ function Header() {
     <div>
       <div style={{backgroundColor: 'skyblue'}}>
         <span>
-          <img src={require('./logo.png')} as={Link} to='/' className="App-logo" alt="logo" />
+          <img src={require('./Assets/logo.png')} as={Link} to='/' className="App-logo" alt="logo" />
         </span>
         <span>
-          <img src={require('./ashok-stambha.png')} className="App-logo" alt="logo" />
+          <img src={require('./Assets/ashok.png')} className="App-logo" alt="logo" />
         </span>
 
         <span className='styled'>NITI Ayog, Government of India</span>
