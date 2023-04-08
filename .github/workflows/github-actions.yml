@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - 'feature/**'
+      - stage/**
 
 env:
   NODE_VERSION: '18.x'
@@ -18,12 +19,27 @@ jobs:
     steps:
     - id: set-env
       name: Set ENV
-      if: ${{ (startsWith(github.ref_name, 'feature/')) ||  (startsWith(github.ref_name, 'main')) }}
+      if: ${{ (startsWith(github.ref_name, 'feature/')) ||  (startsWith(github.ref_name, 'main')) || ||  (startsWith(github.ref_name, 'stage/')) }}
       run: |
         echo "************* Set ENV **************"
         echo "Branch=$GITHUB_REF_NAME"
-        echo "Setting up ENV=dev"
-        echo "env=dev" >> "$GITHUB_OUTPUT"
+        BRANCH_PREFIX=${GITHUB_REF_NAME%/*}
+        if [[ $BRANCH_PREFIX -eq 'stage' ]]
+        then
+          echo "Setting up ENV=stage"
+          echo "env=stage" >> "$GITHUB_OUTPUT"  
+        elif [[ $BRANCH_PREFIX -eq 'release' ]]
+        then
+          echo "Setting up ENV=prod"
+          echo "env=prod" >> "$GITHUB_OUTPUT"
+        elif [[ $BRANCH_PREFIX -eq 'feature' ]]
+        then
+          echo "Setting up ENV=feature"
+          echo "env=feature" >> "$GITHUB_OUTPUT"
+        else
+        then
+          echo "Setting up ENV=dev"
+          echo "env=dev" >> "$GITHUB_OUTPUT"
         echo "************************************"
 
   build:
