@@ -22,7 +22,7 @@ function Header() {
       </div>
 
       <div>
-      <Navbar bg="dark" variant='dark' expand="lg">
+      <Navbar bg="dark" variant='dark' expand="lg" className='mb-4'>
         <Container>
           {/* <Navbar.Brand as={Link} to='/'>DPKT</Navbar.Brand> */}
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
