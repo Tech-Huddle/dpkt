@@ -6,6 +6,7 @@ on:
       - main
       - 'feature/**'
       - stage/**
+      - release/**
 
 env:
   NODE_VERSION: '18.x'
@@ -33,10 +34,6 @@ jobs:
         then
           echo "Setting up ENV=prod"
           echo "env=prod" >> "$GITHUB_OUTPUT"
-        elif [[ $BRANCH_PREFIX == 'feature' ]]
-        then
-          echo "Setting up ENV=feature"
-          echo "env=feature" >> "$GITHUB_OUTPUT"
         else
           echo "Setting up ENV=dev"
           echo "env=dev" >> "$GITHUB_OUTPUT"
