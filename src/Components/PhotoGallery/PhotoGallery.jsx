@@ -37,11 +37,10 @@ export default function PhotoGallery() {
     }
     return (
         <>
-            <div>PhotoGallery</div>
-            <Container fluid>
+            <Container>
                 <Row >
                 {imageArr.map((img, i) =>{
-                   return <Col lg={3} md={4} xl={2} ><img className='img-fluid'  key={i}  onClick={() => { viewImage(img) }} src={img} alt="" /></Col>
+                   return <Col lg={3} md={4} xl={2} ><img className='img-fluid mb-4'  key={i}  onClick={() => { viewImage(img) }} src={img} alt="" /></Col>
                 })}
                     
                 </Row>
