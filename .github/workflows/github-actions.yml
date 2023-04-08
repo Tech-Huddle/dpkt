@@ -19,7 +19,7 @@ jobs:
     steps:
     - id: set-env
       name: Set ENV
-      if: ${{ (startsWith(github.ref_name, 'feature/')) ||  (startsWith(github.ref_name, 'main')) || ||  (startsWith(github.ref_name, 'stage/')) }}
+      if: ${{ (startsWith(github.ref_name, 'feature/')) ||  (startsWith(github.ref_name, 'main')) || (startsWith(github.ref_name, 'stage/')) }}
       run: |
         echo "************* Set ENV **************"
         echo "Branch=$GITHUB_REF_NAME"
