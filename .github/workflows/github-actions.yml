@@ -7,6 +7,8 @@ on:
       - 'feature/**'
       - stage/**
       - release/**
+    tags:        
+      - v0.1-alpha
 
 env:
   NODE_VERSION: '18.x'
