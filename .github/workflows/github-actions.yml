@@ -25,10 +25,6 @@ jobs:
         echo "Branch=$GITHUB_REF_NAME"
         BRANCH_PREFIX=${GITHUB_REF_NAME%/*}
         echo "Branch prefix=$BRANCH_PREFIX"
-        if [[ 1 -eq 1 ]]
-        then
-          echo "YES"
-        fi
         if [[ "$BRANCH_PREFIX" -eq 'stage' ]]
         then
           echo "Setting up ENV=stage"
@@ -42,7 +38,6 @@ jobs:
           echo "Setting up ENV=feature"
           echo "env=feature" >> "$GITHUB_OUTPUT"
         else
-        then
           echo "Setting up ENV=dev"
           echo "env=dev" >> "$GITHUB_OUTPUT"
         fi
