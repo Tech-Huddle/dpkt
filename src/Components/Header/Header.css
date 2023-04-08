@@ -1,0 +1,7 @@
+/* .styled{float:right;
+     padding:10px 10px 10px 10px }
+@media only screen and (max-width: 400px) {
+    .styled{
+        float: inline-end;
+    }
+} */

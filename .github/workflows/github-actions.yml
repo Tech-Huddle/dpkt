@@ -1,0 +1,103 @@
+name: DPKT Pipeline
+# run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }} 🚀
+on: 
+  push:
+    branches:
+      - main
+      - 'feature/**'
+      - stage/**
+      - release/**
+    tags:        
+      - v0.1-alpha
+
+env:
+  NODE_VERSION: '18.x'
+
+jobs:
+  env-check:
+    name: Check Environment
+    runs-on: ubuntu-latest
+    outputs:
+      ENV: ${{ steps.set-env.outputs.env }}
+    steps:
+    - id: set-env
+      name: Set ENV
+      if: ${{ (startsWith(github.ref_name, 'feature/')) ||  (startsWith(github.ref_name, 'main')) || (startsWith(github.ref_name, 'stage/')) }}
+      run: |
+        echo "************* Set ENV **************"
+        echo "Branch=$GITHUB_REF_NAME"
+        BRANCH_PREFIX=${GITHUB_REF_NAME%/*}
+        echo "Branch prefix=$BRANCH_PREFIX"
+        if [[ $BRANCH_PREFIX == 'stage' ]]
+        then
+          echo "Setting up ENV=stage"
+          echo "env=stage" >> "$GITHUB_OUTPUT"  
+        elif [[ $BRANCH_PREFIX == 'release' ]]
+        then
+          echo "Setting up ENV=prod"
+          echo "env=prod" >> "$GITHUB_OUTPUT"
+        else
+          echo "Setting up ENV=dev"
+          echo "env=dev" >> "$GITHUB_OUTPUT"
+        fi
+        echo "************************************"
+
+  build:
+    name: Build
+    needs: env-check
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+    - name: Npm Package Build
+      run: |
+        npm ci
+        npm run build --if-present
+        ls -l
+
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.1.2
+      with:
+        # Artifact name
+        name: build-package
+        # A file, directory or wildcard pattern that describes what to upload
+        path: build
+        # The desired behavior if no files are found using the provided path.
+
+  deploy:
+    name: Deploy
+    runs-on:  ubuntu-latest
+    if: ${{ (startsWith(github.ref_name, 'main')) || (startsWith(github.ref_name, 'stage/')) || (startsWith(github.ref_name, 'release')) || contains(github.event.head_commit.message, 'deploy=dev') }}
+    needs: 
+    - build
+    - env-check
+    steps:
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v2.1.1
+      with:
+        # Artifact name
+        name: build-package
+        # Destination path
+        path: build-package
+    - name: Deployment
+      env:
+        ENV: ${{needs.env-check.outputs.ENV}}
+      run: |
+        ls -l
+        BUCKET=dpkt-$ENV
+        echo "========= Bucket Name ==========="
+        echo $BUCKET
+        echo "================================="
+        echo $GITHUB_REF_NAME
+        echo "======= Checking AWS Version ======="
+        echo ${{ secrets.AWS_ACCESS_KEY_ID }}
+        echo ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws --version
+        export AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}
+        export AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        export AWS_REGION=ap-south-1
+        # aws s3api list-objects --bucket $BUCKET
+        aws s3 cp build-package s3://$BUCKET/ --recursive
