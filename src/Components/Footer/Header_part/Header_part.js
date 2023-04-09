@@ -3,38 +3,55 @@ import "./Header_part.css";
 
 function Header_part() {
   return (
-    <div className="header_container">
-      <div className="part1">
-        <p>Home</p>
-        <p>About the Portal</p>
-        <p>Site Map</p>
-        <p>Privacy Policy</p>
-      </div>
-
-      <div className="part_rest">
-        <p>Link to us</p>
-        <p>FAQS</p>
-        <p>Linking Policy</p>
-      </div>
-      <div className="part_rest">
-        <p>Terms of Use</p>
-        <p>Help</p>
-        <p>Contact Us</p>
-        <p>Copyright Policy</p>
-      </div>
-      <div className="part_rest">
-        <img
-          className="image"
-          src="https://img.republicworld.com/republic-prod/stories/promolarge/xhdpi/920saquvcoh44bnj_1605164547.jpeg"
-          alt=""
-        />
-      </div>
-      <div>
-        <img
-          className="image"
-          src="https://uxdt.nic.in/wp-content/uploads/2020/06/nic-logo-nic-logo-1-bilingual-white-1-01.jpg?x24036"
-          alt=""
-        />
+    <div className="footer_head">
+      <div className="sb_footer section_padding">
+        <div className="sb_footer-links">
+          <div className="sb_footer-links-div">
+            <a href="/home">
+              <p>Home</p>
+            </a>
+            <a href="/home">
+              <p>About the Portal</p>
+            </a>
+            <a href="/home">
+              <p>Site Map</p>
+            </a>
+            <a href="/home">
+              <p>Privacy Policy</p>
+            </a>
+          </div>
+          <div className="sb_footer-links-div">
+            <a href="/home">
+              <p>Link to us</p>
+            </a>
+            <a href="/home">
+              <p>FAQS</p>
+            </a>
+            <a href="/home">
+              <p>Linking Policy</p>
+            </a>
+          </div>
+          <div className="sb_footer-links-div">
+            <a href="/home">
+              <p>Terms of Use</p>
+            </a>
+            <a href="/home">
+              <p>Help</p>
+            </a>
+            <a href="/home">
+              <p>Contact us</p>
+            </a>
+            <a href="/home">
+              <p>Copyright Policy</p>
+            </a>
+          </div>
+          <div className="sb_footer-links-div">
+            <img
+              src="https://images.all-free-download.com/images/graphicwebp/qr_code_198897.webp"
+              alt=""
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
