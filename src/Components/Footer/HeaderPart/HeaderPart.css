@@ -1,0 +1,42 @@
+.section_padding {
+  padding: 1rem 2rem;
+}
+
+.footer_head {
+  background-color: rgb(35, 35, 67);
+}
+
+.sb_footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.sb_footer-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.sb_footer-links-div {
+  width: 150px;
+  margin: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  color: whitesmoke;
+}
+
+a {
+  color: rgb(175, 175, 179);
+  text-decoration: none;
+}
+
+.NIC {
+  height: 150px;
+  width: 150px;
+}
