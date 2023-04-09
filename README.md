@@ -32,3 +32,4 @@ Please follow the below strategy in order to avoid conflicts and keep maintainab
 |Environment|Link  |
 |--|--|
 | Dev | http://dpkt-dev.s3-website.ap-south-1.amazonaws.com/ |
+| Stage | http://dpkt-stage.s3-website.ap-south-1.amazonaws.com/ |
