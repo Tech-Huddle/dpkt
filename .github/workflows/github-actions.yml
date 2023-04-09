@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - 'feature/**'
-      - stage/**
+      - stage
       - release/**
     tags:        
       - v0.1-alpha
