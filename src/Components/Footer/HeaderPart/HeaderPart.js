@@ -11,7 +11,7 @@ function HeaderPart() {
               <p>Home</p>
             </a>
             <a href="/home">
-              <p>About the Portal</p>
+              <p>About the Portal </p>
             </a>
             <a href="/home">
               <p>Site Map</p>
