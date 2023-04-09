@@ -1,8 +1,17 @@
-.styled{float:'right';
-     padding:'10px 10px 10px 10px' }
+.styled {
+    font-size: small;
+    float: right;
+    padding: 10px 10px 0px 10px
+}
 
-@media only screen and (max-width: 400px) {
-    .styled{
-        float: inline-end;
+@media only screen and (min-width: 400px) {
+    .styled {
+        font-size: medium;
+        float: right;
+        padding: 20px 10px 10px 10px
     }
+}
+
+.img{
+    float: right;
 }

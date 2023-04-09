@@ -1,10 +1,14 @@
 name: DPKT Pipeline
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+# run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }} 🚀
 on: 
   push:
     branches:
       - main
       - 'feature/**'
+      - stage
+      - release/**
+    tags:        
+      - v0.1-alpha
 
 env:
   NODE_VERSION: '18.x'
@@ -18,12 +22,24 @@ jobs:
     steps:
     - id: set-env
       name: Set ENV
-      if: ${{ (startsWith(github.ref_name, 'feature/')) ||  (startsWith(github.ref_name, 'main')) }}
+      if: ${{ (startsWith(github.ref_name, 'feature/')) ||  (startsWith(github.ref_name, 'main')) || (startsWith(github.ref_name, 'stage/')) }}
       run: |
         echo "************* Set ENV **************"
         echo "Branch=$GITHUB_REF_NAME"
-        echo "Setting up ENV=dev"
-        echo "env=dev" >> "$GITHUB_OUTPUT"
+        BRANCH_PREFIX=${GITHUB_REF_NAME%/*}
+        echo "Branch prefix=$BRANCH_PREFIX"
+        if [[ $BRANCH_PREFIX == 'stage' ]]
+        then
+          echo "Setting up ENV=stage"
+          echo "env=stage" >> "$GITHUB_OUTPUT"  
+        elif [[ $BRANCH_PREFIX == 'release' ]]
+        then
+          echo "Setting up ENV=prod"
+          echo "env=prod" >> "$GITHUB_OUTPUT"
+        else
+          echo "Setting up ENV=dev"
+          echo "env=dev" >> "$GITHUB_OUTPUT"
+        fi
         echo "************************************"
 
   build:
@@ -54,7 +70,7 @@ jobs:
   deploy:
     name: Deploy
     runs-on:  ubuntu-latest
-    if: ${{ (startsWith(github.ref_name, 'main')) || contains(github.event.head_commit.message, 'deploy=dev') }}
+    if: ${{ (startsWith(github.ref_name, 'main')) || (startsWith(github.ref_name, 'stage/')) || (startsWith(github.ref_name, 'release')) || contains(github.event.head_commit.message, 'deploy=dev') }}
     needs: 
     - build
     - env-check
