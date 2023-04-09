@@ -26,7 +26,7 @@ export default function AccreditionsPage() {
     ];
   return (
     <>
-      <div>AccreditionsPage</div>
+      <div>Accreditions</div>
      <Container>
                 <Row xs={1} md={2} lg={4}>
                     {cards.map((card, index) => (
