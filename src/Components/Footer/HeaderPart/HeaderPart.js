@@ -1,7 +1,7 @@
 import React from "react";
-import "./Header_part.css";
+import "./HeaderPart.css";
 
-function Header_part() {
+function HeaderPart() {
   return (
     <div className="footer_head">
       <div className="sb_footer section_padding">
@@ -57,4 +57,4 @@ function Header_part() {
   );
 }
 
-export default Header_part;
+export default HeaderPart;

@@ -1,13 +1,13 @@
 import React from "react";
-import Header_part from "./Header_part/Header_part";
+import HeaderPart from "./HeaderPart/HeaderPart";
 import "./footer.css";
-import Footer_part from "./Footer_part/Footer_part";
+import FooterPart from "./FooterPart/FooterPart";
 
 function Footer() {
   return (
     <>
-      <Header_part />
-      <Footer_part />
+      <HeaderPart />
+      <FooterPart />
     </>
   );
 }
