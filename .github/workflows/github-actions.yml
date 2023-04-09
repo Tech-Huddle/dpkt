@@ -7,6 +7,7 @@ on:
       - 'feature/**'
       - stage
       - release/**
+      - bug/**
     tags:        
       - v0.1-alpha
 
@@ -22,7 +23,7 @@ jobs:
     steps:
     - id: set-env
       name: Set ENV
-      if: ${{ (startsWith(github.ref_name, 'feature/')) ||  (startsWith(github.ref_name, 'main')) || (startsWith(github.ref_name, 'stage/')) }}
+      if: ${{ (startsWith(github.ref_name, 'feature/')) || (startsWith(github.ref_name, 'bug/')) ||  (startsWith(github.ref_name, 'main')) || (startsWith(github.ref_name, 'stage/')) }}
       run: |
         echo "************* Set ENV **************"
         echo "Branch=$GITHUB_REF_NAME"
@@ -54,7 +55,7 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
     - name: Npm Package Build
       run: |
-        npm ci
+        npm install
         npm run build --if-present
         ls -l
 
