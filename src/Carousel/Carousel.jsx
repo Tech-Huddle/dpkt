@@ -1,46 +1,48 @@
 import Carousel from 'react-bootstrap/Carousel';
 import './Carousel.css'
 function HeaderCarousel() {
+  const cards = [
+    {
+      title: 'Card 1',
+      text: 'This is the first card',
+      image: 'https://random.imagecdn.app/150/150',
+    },
+    {
+      title: 'Card 2',
+      text: 'This is the second card',
+      image: 'https://random.imagecdn.app/150/150',
+    },
+    {
+      title: 'Card 3',
+      text: 'This is the third card',
+      image: 'https://random.imagecdn.app/150/150',
+    },
+    {
+      title: 'Card 4',
+      text: 'This is the fourth card',
+      image: 'https://random.imagecdn.app/150/150',
+    },
+  ];
   return (
+    <Carousel>{
+      cards.map((card,i) => {
+        return (
+          <Carousel.Item key={i}>
+            <img
+              className="d-block w-100"
+              src={card.image}
+              alt="First slide"
+            />
+            <Carousel.Caption>
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        )
+      })
+      }
 
-    <Carousel>
-      <Carousel.Item>
-        <img
-        className="cropped-image"
-          src="https://random.imagecdn.app/150/150"
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item >
-        <img
-        className="cropped-image none-image"
-          src="https://random.imagecdn.app/150/150"
-          alt="Second slide"
-        />
 
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item >
-        <img
-        className="cropped-image none-image"
-          src="https://random.imagecdn.app/150/150"
-          alt="Third slide"
-        />
-
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
     </Carousel>
   );
 }
